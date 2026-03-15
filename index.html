@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Caribbean Digital Nomad · 2026 Global Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>The Caribbean Digital Nomad · 2026 Mobile Guide</title>
   <!-- Tailwind + Font Awesome + custom styles -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -23,7 +23,7 @@
       max-width: 75rem;
       margin-left: auto;
       margin-right: auto;
-      padding: 2rem 2rem;
+      padding: 2rem 1.5rem;
       border-bottom: 1px solid #e2dcd5;
     }
     .chapter:last-child { border-bottom: none; }
@@ -73,19 +73,42 @@
     .visa-table {
       background: white;
       border-radius: 1.5rem;
-      overflow: hidden;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border: 1px solid #d0dbd8;
+    }
+    .visa-table table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px; /* forces scroll on mobile */
     }
     .visa-table th {
       background: #0f6b7c;
       color: white;
       font-weight: 500;
       padding: 0.75rem 1rem;
+      white-space: nowrap;
     }
     .visa-table td {
       padding: 1rem;
       border-bottom: 1px solid #e2eae8;
       vertical-align: top;
+    }
+    /* mobile table text reduction */
+    @media (max-width: 640px) {
+      .visa-table td, .visa-table th {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+      }
+      .chapter {
+        padding: 1.5rem 1rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .pull-quote {
+        font-size: 1.1rem;
+      }
     }
     .evronai-watermark {
       font-size: 10px;
@@ -138,6 +161,11 @@
     .cost-low { background: #d1fae5; color: #065f46; }
     .cost-moderate { background: #fef3c7; color: #92400e; }
     .cost-high { background: #fee2e2; color: #b91c1c; }
+    /* improve touch targets */
+    #sound-toggle {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
   </style>
 </head>
 <body class="paper-bg">
@@ -146,269 +174,231 @@
   <audio id="ambient-sound" loop preload="auto" style="display: none;">
     <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Kai_Engel/Saturday/Kai_Engel_-_02_-_Moon_Beach.mp3" type="audio/mp3">
   </audio>
-  <!-- sound toggle -->
-  <div class="fixed bottom-6 right-6 z-50">
-    <button id="sound-toggle" class="bg-white/80 backdrop-blur-md text-teal-700 w-12 h-12 rounded-full shadow-xl flex items-center justify-center text-xl border border-teal-200 hover:scale-110 transition">
+  <!-- sound toggle (larger touch area) -->
+  <div class="fixed bottom-4 right-4 z-50">
+    <button id="sound-toggle" class="bg-white/80 backdrop-blur-md text-teal-700 w-14 h-14 rounded-full shadow-xl flex items-center justify-center text-2xl border border-teal-200 hover:scale-110 transition">
       <i class="fa-solid fa-volume-off" id="sound-icon"></i>
     </button>
   </div>
 
   <!-- book cover header -->
-  <div class="bg-[#0f4b55] text-white py-16 px-6 text-center relative">
+  <div class="bg-[#0f4b55] text-white py-12 px-4 text-center relative">
     <div class="max-w-3xl mx-auto">
-      <span class="inline-block bg-white/20 text-sm px-4 py-1 rounded-full mb-4 border border-white/30">March 2026 · Global Edition</span>
-      <h1 class="text-5xl md:text-6xl font-bold mb-4">The Caribbean Digital Nomad</h1>
-      <p class="text-xl text-white/90 max-w-2xl mx-auto">Opportunities, skills, visas & courses — a factual handbook for citizens ready to work from anywhere.</p>
+      <span class="inline-block bg-white/20 text-sm px-3 py-1 rounded-full mb-3 border border-white/30">March 2026 · Global Edition</span>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3">The Caribbean Digital Nomad</h1>
+      <p class="text-base md:text-lg text-white/90 max-w-2xl mx-auto">Opportunities, skills, visas & courses — a factual handbook for citizens ready to work from anywhere.</p>
     </div>
   </div>
 
   <!-- CHAPTER 1: WHAT IS A DIGITAL NOMAD? -->
   <section class="chapter anchor" id="chapter1">
-    <span class="stat-badge mb-4">Chapter 1</span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">What is a digital nomad? — definition & 2026 context</h2>
-    <div class="grid md:grid-cols-2 gap-10">
+    <span class="stat-badge mb-3">Chapter 1</span>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">What is a digital nomad? — definition & 2026 context</h2>
+    <div class="grid md:grid-cols-2 gap-6">
       <div>
-        <p class="text-lg mb-4">A <strong>digital nomad</strong> is a professional who works remotely using digital technologies while maintaining a lifestyle of travel and changing locations [1]. The term was coined in 1997 by Tsugio Makimoto and David Manners, who predicted "thousands would sell their homes and embrace a lifestyle of global mobility" [1].</p>
-        <p class="mb-4">In 2026, remote work is a permanent pillar of the global economy. According to the <em>Jamaica Observer</em>, remote job boards are gateways to international labour markets, allowing Caribbean professionals to earn foreign income without emigrating [2].</p>
-        <div class="sidebar">
-          <i class="fa-solid fa-users text-2xl text-teal-700 mb-2"></i>
-          <p class="font-semibold">Global numbers: 35 million digital nomads in 2022; projected to exceed 1 billion by 2035 [1]. 58% are under 35.</p>
+        <p class="text-base mb-3">A <strong>digital nomad</strong> is a professional who works remotely using digital technologies while maintaining a lifestyle of travel and changing locations [1]. The term was coined in 1997 by Tsugio Makimoto and David Manners, who predicted "thousands would sell their homes and embrace a lifestyle of global mobility" [1].</p>
+        <p class="mb-3">In 2026, remote work is a permanent pillar of the global economy. According to the <em>Jamaica Observer</em>, remote job boards are gateways to international labour markets, allowing Caribbean professionals to earn foreign income without emigrating [2].</p>
+        <div class="sidebar p-4">
+          <i class="fa-solid fa-users text-xl text-teal-700 mb-1"></i>
+          <p class="font-semibold text-sm">Global numbers: 35 million digital nomads in 2022; projected to exceed 1 billion by 2035 [1]. 58% are under 35.</p>
         </div>
       </div>
       <div>
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" class="rounded-3xl shadow-xl" alt="people working remotely">
-        <p class="text-sm text-stone-500 mt-2">Remote work has become mainstream — the bedroom can be anywhere, even Bali [1].</p>
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" class="rounded-2xl shadow-xl" alt="people working remotely" loading="lazy">
+        <p class="text-xs text-stone-500 mt-1">Remote work has become mainstream — the bedroom can be anywhere, even Bali [1].</p>
       </div>
     </div>
-    <p class="mt-4">The 2026 reality: <strong>fractional work</strong> is mainstream. Caribbean professionals now work 2–4 part-time remote roles, earning $500–$3,000 per client, 10–25 hours per week [7]. AI acts as a "pocket coworker" enabling this juggle [7].</p>
+    <p class="mt-3 text-sm">The 2026 reality: <strong>fractional work</strong> is mainstream. Caribbean professionals now work 2–4 part-time remote roles, earning $500–$3,000 per client, 10–25 hours per week [7]. AI acts as a "pocket coworker" enabling this juggle [7].</p>
   </section>
 
   <!-- CHAPTER 2: CARIBBEAN PASSPORT POWER -->
   <section class="chapter anchor" id="chapter2">
-    <span class="stat-badge mb-4">Chapter 2</span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Caribbean passport power in 2026</h2>
-    <p class="mb-6">Before exploring global destinations, it's essential to understand the mobility Caribbean citizens already possess. Caribbean passports offer visa‑free access to <strong>145+ countries</strong>, including the EU, UK, and Singapore [8][10].</p>
+    <span class="stat-badge mb-3">Chapter 2</span>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">Caribbean passport power in 2026</h2>
+    <p class="mb-4">Before exploring global destinations, it's essential to understand the mobility Caribbean citizens already possess. Caribbean passports offer visa‑free access to <strong>145+ countries</strong>, including the EU, UK, and Singapore [8][10].</p>
     
-    <div class="visa-table my-6">
-      <table class="w-full text-sm">
-        <thead><tr><th>Passport</th><th>Global rank</th><th>Visa‑free destinations</th><th>Key advantages</th></tr></thead>
+    <div class="visa-table my-4">
+      <table>
+        <thead><tr><th>Passport</th><th>Global rank</th><th>Visa‑free</th><th>Key advantages</th></tr></thead>
         <tbody>
-          <tr><td class="font-medium">Barbados</td><td>45th globally</td><td>160+</td><td>No worldwide income tax, strong EU access [2]</td></tr>
-          <tr><td class="font-medium">St. Kitts & Nevis</td><td>23rd globally</td><td>155+</td><td>Citizenship by investment, dual citizenship [5][7]</td></tr>
-          <tr><td class="font-medium">Antigua & Barbuda</td><td>24th globally</td><td>154+</td><td>Citizenship by investment, UK access [3][7]</td></tr>
-          <tr><td class="font-medium">Bahamas</td><td>20th globally</td><td>158+</td><td>Tax efficiency, proximity to US [2][7]</td></tr>
-          <tr><td class="font-medium">Trinidad & Tobago</td><td>28th globally</td><td>146+</td><td>Strong business ties with Americas [2][7]</td></tr>
-          <tr><td class="font-medium">Grenada</td><td>27th globally</td><td>147+</td><td>Citizenship by investment, China access [7]</td></tr>
-          <tr><td class="font-medium">St. Lucia</td><td>29th globally</td><td>145+</td><td>Citizenship by investment, Schengen access [7]</td></tr>
-          <tr><td class="font-medium">Dominica</td><td>29th globally</td><td>145+</td><td>Citizenship by investment, UK access [7]</td></tr>
+          <tr><td class="font-medium">Barbados</td><td>45th</td><td>160+</td><td>No worldwide income tax, strong EU access [2]</td></tr>
+          <tr><td class="font-medium">St. Kitts & Nevis</td><td>23rd</td><td>155+</td><td>Citizenship by investment, dual citizenship [3][7]</td></tr>
+          <tr><td class="font-medium">Antigua & Barbuda</td><td>24th</td><td>154+</td><td>Citizenship by investment, UK access [3][7]</td></tr>
+          <tr><td class="font-medium">Bahamas</td><td>20th</td><td>158+</td><td>Tax efficiency, proximity to US [2][7]</td></tr>
+          <tr><td class="font-medium">Trinidad & Tobago</td><td>28th</td><td>146+</td><td>Strong business ties with Americas [2][7]</td></tr>
+          <tr><td class="font-medium">Grenada</td><td>27th</td><td>147+</td><td>Citizenship by investment, China access [7]</td></tr>
+          <tr><td class="font-medium">St. Lucia</td><td>29th</td><td>145+</td><td>Citizenship by investment, Schengen access [7]</td></tr>
+          <tr><td class="font-medium">Dominica</td><td>29th</td><td>145+</td><td>Citizenship by investment, UK access [7]</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="text-sm text-stone-500">Source: Henley Passport Index / Citizenship Bay 2026 [3][7]</p>
-    <p class="mt-4">Many Caribbean nations also offer <strong>citizenship by investment</strong>, allowing entrepreneurs to acquire second passports that further enhance global mobility [8].</p>
+    <p class="text-xs text-stone-500">Source: Henley Passport Index / Citizenship Bay 2026 [3][7]</p>
+    <p class="mt-3 text-sm">Many Caribbean nations also offer <strong>citizenship by investment</strong>, allowing entrepreneurs to acquire second passports that further enhance global mobility [8].</p>
   </section>
 
-  <!-- NEW CHAPTER: COST OF LIVING & SAFETY (MARCH 2026) -->
+  <!-- CHAPTER 3: COST OF LIVING & SAFETY -->
   <section class="chapter anchor" id="cost-safety">
-    <span class="stat-badge mb-4">Chapter 3</span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">💰 Cost of living & safety — 2026 global overview</h2>
-    <p class="mb-6">When choosing a destination, two factors matter as much as visa approval: <strong>monthly expenses</strong> and <strong>personal safety</strong>. Below is a synthesis of current data across regions frequented by digital nomads [9][6][2].</p>
+    <span class="stat-badge mb-3">Chapter 3</span>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">💰 Cost of living & safety — 2026 global overview</h2>
+    <p class="mb-4">When choosing a destination, two factors matter as much as visa approval: <strong>monthly expenses</strong> and <strong>personal safety</strong>. Below is a synthesis of current data across regions frequented by digital nomads [9][6][2].</p>
 
-    <div class="grid md:grid-cols-2 gap-8 mb-8">
-      <div class="bg-white p-6 rounded-2xl shadow-sm">
-        <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-coins text-teal-600 mr-2"></i> Monthly cost ranges (single person)</h3>
-        <ul class="space-y-3">
-          <li class="flex justify-between"><span>Southeast Asia (Thailand, Malaysia):</span> <span class="font-semibold">$800 – $1,500</span> <span class="cost-indicator cost-low ml-2">low</span></li>
-          <li class="flex justify-between"><span>Central America (Mexico, Colombia):</span> <span class="font-semibold">$1,200 – $2,000</span> <span class="cost-indicator cost-moderate ml-2">moderate</span></li>
-          <li class="flex justify-between"><span>Southern Europe (Portugal, Spain):</span> <span class="font-semibold">$2,000 – $3,000</span> <span class="cost-indicator cost-moderate ml-2">moderate</span></li>
-          <li class="flex justify-between"><span>Western Europe (Germany, Netherlands):</span> <span class="font-semibold">$2,500 – $4,000</span> <span class="cost-indicator cost-high ml-2">high</span></li>
-          <li class="flex justify-between"><span>Nordics (Iceland, Denmark):</span> <span class="font-semibold">$3,000 – $5,000</span> <span class="cost-indicator cost-high ml-2">high</span></li>
-          <li class="flex justify-between"><span>Middle East (UAE, Qatar):</span> <span class="font-semibold">$2,500 – $4,500</span> <span class="cost-indicator cost-high ml-2">high</span></li>
-          <li class="flex justify-between"><span>Africa (Mauritius, South Africa):</span> <span class="font-semibold">$1,500 – $2,500</span> <span class="cost-indicator cost-moderate ml-2">moderate</span></li>
+    <div class="grid md:grid-cols-2 gap-4 mb-6">
+      <div class="bg-white p-4 rounded-xl shadow-sm">
+        <h3 class="text-lg font-bold mb-2 flex items-center"><i class="fa-solid fa-coins text-teal-600 mr-2"></i> Monthly cost ranges</h3>
+        <ul class="space-y-1 text-sm">
+          <li class="flex justify-between"><span>Southeast Asia:</span> <span class="font-semibold">$800–1,500</span> <span class="cost-indicator cost-low ml-1">low</span></li>
+          <li class="flex justify-between"><span>Central America:</span> <span class="font-semibold">$1,200–2,000</span> <span class="cost-indicator cost-moderate ml-1">moderate</span></li>
+          <li class="flex justify-between"><span>Southern Europe:</span> <span class="font-semibold">$2,000–3,000</span> <span class="cost-indicator cost-moderate ml-1">moderate</span></li>
+          <li class="flex justify-between"><span>Western Europe:</span> <span class="font-semibold">$2,500–4,000</span> <span class="cost-indicator cost-high ml-1">high</span></li>
+          <li class="flex justify-between"><span>Nordics:</span> <span class="font-semibold">$3,000–5,000</span> <span class="cost-indicator cost-high ml-1">high</span></li>
+          <li class="flex justify-between"><span>Middle East:</span> <span class="font-semibold">$2,500–4,500</span> <span class="cost-indicator cost-high ml-1">high</span></li>
+          <li class="flex justify-between"><span>Africa:</span> <span class="font-semibold">$1,500–2,500</span> <span class="cost-indicator cost-moderate ml-1">moderate</span></li>
         </ul>
-        <p class="text-xs text-stone-500 mt-3">Source: Numbeo / Weather2Travel 2026 [9]</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl shadow-sm">
-        <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fa-solid fa-shield-halved text-teal-600 mr-2"></i> Global safety index (top countries)</h3>
-        <ul class="space-y-3">
-          <li class="flex justify-between"><span>🇮🇸 Iceland</span> <span class="safety-high">very safe (GP Index #1)</span></li>
+      <div class="bg-white p-4 rounded-xl shadow-sm">
+        <h3 class="text-lg font-bold mb-2 flex items-center"><i class="fa-solid fa-shield-halved text-teal-600 mr-2"></i> Safest countries</h3>
+        <ul class="space-y-1 text-sm">
+          <li class="flex justify-between"><span>🇮🇸 Iceland</span> <span class="safety-high">very safe (#1)</span></li>
           <li class="flex justify-between"><span>🇩🇰 Denmark</span> <span class="safety-high">very safe</span></li>
           <li class="flex justify-between"><span>🇨🇭 Switzerland</span> <span class="safety-high">very safe</span></li>
-          <li class="flex justify-between"><span>🇳🇿 New Zealand</span> <span class="safety-high">very safe</span></li>
           <li class="flex justify-between"><span>🇵🇹 Portugal</span> <span class="safety-high">very safe</span></li>
-          <li class="flex justify-between"><span>🇪🇸 Spain</span> <span class="safety-high">very safe</span></li>
           <li class="flex justify-between"><span>🇸🇬 Singapore</span> <span class="safety-high">very safe</span></li>
-          <li class="flex justify-between"><span>🇶🇦 Qatar</span> <span class="safety-high">very safe (7.58/10)</span></li>
+          <li class="flex justify-between"><span>🇶🇦 Qatar</span> <span class="safety-high">very safe</span></li>
         </ul>
-        <p class="text-xs text-stone-500 mt-3">Source: Global Peace Index 2025 / Solo Travel Safety Index [2][9]</p>
       </div>
     </div>
-
-    <div class="sidebar">
+    <div class="sidebar p-3 text-sm">
       <p class="font-semibold">🔍 How to interpret:</p>
-      <p class="text-sm mt-2">Costs vary widely within countries (e.g., Bangkok vs. Chiang Mai). Safety scores combine crime rates, political stability, and infrastructure reliability. Always check current travel advisories [6][9].</p>
+      <p class="text-xs">Costs vary widely within countries. Safety combines crime rates, political stability, and infrastructure. Always check current advisories [6][9].</p>
     </div>
   </section>
 
-  <!-- CHAPTER 3 (renumbered): GLOBAL DESTINATIONS (now includes cost & safety) -->
+  <!-- CHAPTER 4: GLOBAL DESTINATIONS (now with cost & safety) -->
   <section class="chapter anchor" id="global">
-    <span class="stat-badge mb-4">Chapter 4</span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">🌍 Global destinations: where Caribbean citizens can be digital nomads</h2>
-    <p class="mb-6">Over <strong>50 countries</strong> now offer dedicated digital nomad visas or alternative long‑stay options [9]. Below is a curated list with current 2026 requirements, estimated monthly costs, and safety ratings.</p>
+    <span class="stat-badge mb-3">Chapter 4</span>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">🌍 Global destinations – full data</h2>
+    <p class="mb-4">Over <strong>50 countries</strong> offer dedicated digital nomad visas or alternative long‑stay options [9]. Scroll tables horizontally for details.</p>
 
     <!-- Europe -->
-    <h3 class="text-2xl font-bold mt-10 mb-4"><i class="fa-solid fa-landmark text-teal-600 mr-2"></i>Europe</h3>
-    <div class="visa-table my-4">
-      <table class="w-full text-sm">
-        <thead><tr><th>Country</th><th>Visa / income req.</th><th>Duration</th><th>Est. monthly cost</th><th>Safety (2026)</th><th>Notes</th></tr></thead>
+    <h3 class="text-xl font-bold mt-6 mb-2"><i class="fa-solid fa-landmark text-teal-600 mr-2"></i>Europe</h3>
+    <div class="visa-table mb-6">
+      <table>
+        <thead><tr><th>Country</th><th>Visa / income</th><th>Duration</th><th>Monthly cost</th><th>Safety</th></tr></thead>
         <tbody>
-          <tr><td class="font-medium">Portugal</td><td>D8: €3,280/mo</td><td>1 year, renewable</td><td>€2,000–2,800</td><td class="safety-high">very safe</td><td>Path to residency [7][9]</td></tr>
-          <tr><td class="font-medium">Spain</td><td>€2,520/mo</td><td>1 year, extendable</td><td>€2,200–3,000</td><td class="safety-high">very safe</td><td>Sunshine, fast internet [9]</td></tr>
-          <tr><td class="font-medium">Croatia</td><td>€2,350/mo</td><td>12 months</td><td>€1,800–2,500</td><td class="safety-high">safe</td><td>Family allowed [9]</td></tr>
-          <tr><td class="font-medium">Estonia</td><td>€3,504/mo</td><td>1 year</td><td>€1,800–2,400</td><td class="safety-high">very safe</td><td>E‑residency hub [9]</td></tr>
-          <tr><td class="font-medium">Georgia</td><td>$2,000/mo</td><td>1 year</td><td>$1,200–1,800</td><td class="safety-medium">moderate</td><td>Free visa, no income tax [7][9]</td></tr>
-          <tr><td class="font-medium">Germany</td><td>Freiberufler</td><td>6–12 mo</td><td>€2,500–3,500</td><td class="safety-high">very safe</td><td>For freelancers [7]</td></tr>
-          <tr><td class="font-medium">Greece</td><td>€3,500/mo</td><td>1 year</td><td>€2,000–2,700</td><td class="safety-high">safe</td><td>30% tax exemption [7]</td></tr>
-          <tr><td class="font-medium">Iceland</td><td>No specific visa</td><td>Tourist 90d</td><td>€3,500–5,000</td><td class="safety-high">#1 safest globally</td><td>Global Peace Index top [9]</td></tr>
+          <tr><td>Portugal</td><td>€3,280/mo</td><td>1 yr</td><td>€2,000–2,800</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Spain</td><td>€2,520/mo</td><td>1 yr</td><td>€2,200–3,000</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Croatia</td><td>€2,350/mo</td><td>12 mo</td><td>€1,800–2,500</td><td class="safety-high">safe</td></tr>
+          <tr><td>Estonia</td><td>€3,504/mo</td><td>1 yr</td><td>€1,800–2,400</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Georgia</td><td>$2,000/mo</td><td>1 yr</td><td>$1,200–1,800</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Germany</td><td>Freiberufler</td><td>6–12 mo</td><td>€2,500–3,500</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Greece</td><td>€3,500/mo</td><td>1 yr</td><td>€2,000–2,700</td><td class="safety-high">safe</td></tr>
+          <tr><td>Iceland</td><td>tourist 90d</td><td>90d</td><td>€3,500–5,000</td><td class="safety-high">#1 safest</td></tr>
         </tbody>
       </table>
     </div>
 
     <!-- Central & South America -->
-    <h3 class="text-2xl font-bold mt-10 mb-4"><i class="fa-solid fa-mountain text-teal-600 mr-2"></i>Central & South America</h3>
-    <div class="visa-table my-4">
-      <table class="w-full text-sm">
-        <thead><tr><th>Country</th><th>Visa / income req.</th><th>Duration</th><th>Est. monthly cost</th><th>Safety (2026)</th><th>Notes</th></tr></thead>
+    <h3 class="text-xl font-bold mt-6 mb-2"><i class="fa-solid fa-mountain text-teal-600 mr-2"></i>Central & South America</h3>
+    <div class="visa-table mb-6">
+      <table>
+        <thead><tr><th>Country</th><th>Visa / income</th><th>Duration</th><th>Monthly cost</th><th>Safety</th></tr></thead>
         <tbody>
-          <tr><td class="font-medium">Costa Rica</td><td>Rentista: $2,500/mo</td><td>2 years</td><td>$2,000–3,000</td><td class="safety-high">safe</td><td>Couples $4,000/mo [4][9]</td></tr>
-          <tr><td class="font-medium">Brazil</td><td>$1,500/mo</td><td>1 year</td><td>$1,200–2,000</td><td class="safety-medium">moderate</td><td>US time zone friendly [1]</td></tr>
-          <tr><td class="font-medium">Colombia</td><td>$900/mo</td><td>Up to 2 years</td><td>$1,000–1,600</td><td class="safety-medium">moderate</td><td>Low cost, strong community [1]</td></tr>
-          <tr><td class="font-medium">Mexico</td><td>$2,600/mo</td><td>1–4 years</td><td>$1,500–2,500</td><td class="safety-medium">moderate</td><td>Widely used temp visa [1][7]</td></tr>
-          <tr><td class="font-medium">Argentina</td><td>$2,000/mo</td><td>6 months</td><td>$1,100–1,800</td><td class="safety-medium">moderate</td><td>No local tax [1]</td></tr>
-          <tr><td class="font-medium">Uruguay</td><td>Proof of income</td><td>6–12 months</td><td>$1,800–2,500</td><td class="safety-high">very safe</td><td>Stable, high quality of life [1]</td></tr>
-          <tr><td class="font-medium">Panama</td><td>$3,000/mo</td><td>18 months</td><td>$2,000–2,800</td><td class="safety-medium">moderate</td><td>Banking hub [1]</td></tr>
-          <tr><td class="font-medium">Chile</td><td>Tourist 90d</td><td>90d</td><td>$1,500–2,200</td><td class="safety-high">safe</td><td>High internet penetration</td></tr>
+          <tr><td>Costa Rica</td><td>$2,500/mo</td><td>2 yrs</td><td>$2,000–3,000</td><td class="safety-high">safe</td></tr>
+          <tr><td>Brazil</td><td>$1,500/mo</td><td>1 yr</td><td>$1,200–2,000</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Colombia</td><td>$900/mo</td><td>2 yrs</td><td>$1,000–1,600</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Mexico</td><td>$2,600/mo</td><td>1–4 yrs</td><td>$1,500–2,500</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Argentina</td><td>$2,000/mo</td><td>6 mo</td><td>$1,100–1,800</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Uruguay</td><td>proof of income</td><td>6–12 mo</td><td>$1,800–2,500</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Panama</td><td>$3,000/mo</td><td>18 mo</td><td>$2,000–2,800</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Chile</td><td>tourist 90d</td><td>90d</td><td>$1,500–2,200</td><td class="safety-high">safe</td></tr>
         </tbody>
       </table>
     </div>
 
     <!-- Africa & Middle East -->
-    <h3 class="text-2xl font-bold mt-10 mb-4"><i class="fa-solid fa-sun text-teal-600 mr-2"></i>Africa & Middle East</h3>
-    <div class="visa-table my-4">
-      <table class="w-full text-sm">
-        <thead><tr><th>Country</th><th>Visa / income req.</th><th>Duration</th><th>Est. monthly cost</th><th>Safety (2026)</th><th>Notes</th></tr></thead>
+    <h3 class="text-xl font-bold mt-6 mb-2"><i class="fa-solid fa-sun text-teal-600 mr-2"></i>Africa & Middle East</h3>
+    <div class="visa-table mb-6">
+      <table>
+        <thead><tr><th>Country</th><th>Visa / income</th><th>Duration</th><th>Monthly cost</th><th>Safety</th></tr></thead>
         <tbody>
-          <tr><td class="font-medium">Mauritius</td><td>$1,500/mo</td><td>1 year</td><td>$1,500–2,200</td><td class="safety-high">very safe</td><td>Free visa, island lifestyle [9]</td></tr>
-          <tr><td class="font-medium">Cabo Verde</td><td>$1,585 savings</td><td>6 months</td><td>$1,300–1,900</td><td class="safety-medium">moderate</td><td>African‑European blend [9]</td></tr>
-          <tr><td class="font-medium">Namibia</td><td>$2,000/mo</td><td>6 months</td><td>$1,400–2,000</td><td class="safety-medium">moderate</td><td>Adventure destination [9]</td></tr>
-          <tr><td class="font-medium">UAE (Dubai)</td><td>$5,000/mo</td><td>1 year</td><td>$3,500–5,000</td><td class="safety-high">very safe</td><td>Tax‑free, high‑speed [4][7]</td></tr>
-          <tr><td class="font-medium">Seychelles</td><td>$3,000/mo</td><td>1 year</td><td>$2,500–3,500</td><td class="safety-high">safe</td><td>Tropical paradise</td></tr>
-          <tr><td class="font-medium">South Africa</td><td>$3,000/mo</td><td>6 mo–3 yr</td><td>$1,800–2,500</td><td class="safety-medium">moderate</td><td>Strong digital infra [9]</td></tr>
-          <tr><td class="font-medium">Qatar</td><td>No nomad visa</td><td>Tourist</td><td>$2,500–3,800</td><td class="safety-high">very safe (7.58/10)</td><td>Extremely low crime [2]</td></tr>
+          <tr><td>Mauritius</td><td>$1,500/mo</td><td>1 yr</td><td>$1,500–2,200</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Cabo Verde</td><td>$1,585 savings</td><td>6 mo</td><td>$1,300–1,900</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Namibia</td><td>$2,000/mo</td><td>6 mo</td><td>$1,400–2,000</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>UAE (Dubai)</td><td>$5,000/mo</td><td>1 yr</td><td>$3,500–5,000</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Seychelles</td><td>$3,000/mo</td><td>1 yr</td><td>$2,500–3,500</td><td class="safety-high">safe</td></tr>
+          <tr><td>South Africa</td><td>$3,000/mo</td><td>6 mo–3 yr</td><td>$1,800–2,500</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Qatar</td><td>tourist</td><td>—</td><td>$2,500–3,800</td><td class="safety-high">very safe</td></tr>
         </tbody>
       </table>
     </div>
 
     <!-- Asia & Oceania -->
-    <h3 class="text-2xl font-bold mt-10 mb-4"><i class="fa-solid fa-umbrella-beach text-teal-600 mr-2"></i>Asia & Oceania</h3>
-    <div class="visa-table my-4">
-      <table class="w-full text-sm">
-        <thead><tr><th>Country</th><th>Visa / income req.</th><th>Duration</th><th>Est. monthly cost</th><th>Safety (2026)</th><th>Notes</th></tr></thead>
+    <h3 class="text-xl font-bold mt-6 mb-2"><i class="fa-solid fa-umbrella-beach text-teal-600 mr-2"></i>Asia & Oceania</h3>
+    <div class="visa-table mb-6">
+      <table>
+        <thead><tr><th>Country</th><th>Visa / income</th><th>Duration</th><th>Monthly cost</th><th>Safety</th></tr></thead>
         <tbody>
-          <tr><td class="font-medium">Malaysia</td><td>DE Rantau: $2,000/mo</td><td>1 year</td><td>$1,200–1,800</td><td class="safety-medium">moderate</td><td>Penang, KL hubs [9]</td></tr>
-          <tr><td class="font-medium">Thailand</td><td>LTR: $40k+ income</td><td>5 years</td><td>$1,000–1,700</td><td class="safety-medium">moderate</td><td>Chiang Mai $250/mo rent [9]</td></tr>
-          <tr><td class="font-medium">Indonesia (Bali)</td><td>Second Home: $2k/mo</td><td>5–10 years</td><td>$1,200–2,000</td><td class="safety-medium">moderate</td><td>Canggu, Ubud [9]</td></tr>
-          <tr><td class="font-medium">Japan</td><td>$3,500/mo</td><td>6 months</td><td>$2,500–3,800</td><td class="safety-high">very safe</td><td>New 2026 program</td></tr>
-          <tr><td class="font-medium">South Korea</td><td>$3,000/mo</td><td>1 year</td><td>$2,200–3,200</td><td class="safety-high">very safe</td><td>High‑speed internet</td></tr>
-          <tr><td class="font-medium">Singapore</td><td>No nomad visa</td><td>Tourist</td><td>$3,500–5,500</td><td class="safety-high">very safe</td><td>World’s fastest broadband [9]</td></tr>
-          <tr><td class="font-medium">Fiji</td><td>$2,500/mo</td><td>1 year</td><td>$1,800–2,500</td><td class="safety-medium">moderate</td><td>Remote work focus</td></tr>
+          <tr><td>Malaysia</td><td>$2,000/mo</td><td>1 yr</td><td>$1,200–1,800</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Thailand</td><td>LTR: $40k+</td><td>5 yrs</td><td>$1,000–1,700</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Indonesia (Bali)</td><td>$2,000/mo</td><td>5–10 yr</td><td>$1,200–2,000</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Japan</td><td>$3,500/mo</td><td>6 mo</td><td>$2,500–3,800</td><td class="safety-high">very safe</td></tr>
+          <tr><td>South Korea</td><td>$3,000/mo</td><td>1 yr</td><td>$2,200–3,200</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Singapore</td><td>tourist</td><td>—</td><td>$3,500–5,500</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Fiji</td><td>$2,500/mo</td><td>1 yr</td><td>$1,800–2,500</td><td class="safety-medium">moderate</td></tr>
         </tbody>
       </table>
     </div>
-
-    <p class="text-sm text-stone-500 mt-4">Cost estimates based on Numbeo, Expatistan, and Weather2Travel 2026 data [9]. Safety ratings from Global Peace Index and solo travel safety index [2][6].</p>
+    <p class="text-xs text-stone-500 mt-2">Cost estimates: Numbeo / Expatistan / Weather2Travel 2026 [9]. Safety: Global Peace Index 2025 [2][6].</p>
   </section>
 
-  <!-- CHAPTER 4: STRATEGIC CHOICES (updated) -->
+  <!-- CHAPTER 5: STRATEGIC CHOICES -->
   <section class="chapter anchor" id="strategy">
-    <span class="stat-badge mb-4">Chapter 5</span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">How to choose your destination</h2>
-    <div class="grid md:grid-cols-2 gap-8">
+    <span class="stat-badge mb-3">Chapter 5</span>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">How to choose your destination</h2>
+    <div class="grid md:grid-cols-2 gap-4">
       <div>
-        <h3 class="text-xl font-bold mb-3">✅ Factors to consider</h3>
-        <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Time zone alignment</strong> with clients/employer [7]</li>
-          <li><strong>Internet reliability</strong> – aim for 100+ Mbps [9]</li>
-          <li><strong>Cost of living vs. income</strong> – Southeast Asia lowest, Europe premium [9]</li>
-          <li><strong>Safety & political stability</strong> – check Global Peace Index [2][6]</li>
-          <li><strong>Tax implications</strong> – some countries exempt foreign income [2]</li>
-          <li><strong>Healthcare quality</strong> – private insurance often required</li>
+        <h3 class="text-lg font-bold mb-2">✅ Factors to consider</h3>
+        <ul class="list-disc pl-5 text-sm space-y-1">
+          <li>Time zone alignment with clients [7]</li>
+          <li>Internet reliability – 100+ Mbps [9]</li>
+          <li>Cost of living vs. income [9]</li>
+          <li>Safety & political stability [2][6]</li>
+          <li>Tax implications (foreign income exemption) [2]</li>
+          <li>Healthcare quality</li>
         </ul>
       </div>
       <div>
-        <h3 class="text-xl font-bold mb-3">📋 Practical steps</h3>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Verify requirements on <strong>official embassy websites</strong> – rules change frequently [9]</li>
-          <li>Prepare documents: police clearance, bank statements, insurance, employment proof</li>
-          <li>Consider using <strong>immigration specialists</strong> for complex applications [1]</li>
-          <li>Use Numbeo and Expatistan for real‑time cost comparisons</li>
-          <li>Join local expat Facebook groups to gauge safety and community</li>
+        <h3 class="text-lg font-bold mb-2">📋 Practical steps</h3>
+        <ul class="list-disc pl-5 text-sm space-y-1">
+          <li>Verify on official embassy sites [9]</li>
+          <li>Prepare police clearance, bank statements, insurance</li>
+          <li>Use Numbeo for real‑time cost comparisons</li>
+          <li>Join local expat groups for safety insights</li>
         </ul>
       </div>
     </div>
-    <div class="pull-quote mt-6">
+    <div class="pull-quote mt-4 text-base">
       “Digital nomad visas are not just about travel — they are strategic tools for global career mobility.” — Keron Rose, 2026
-    </div>
-  </section>
-
-  <!-- CHAPTER 5: SKILLS REQUIRED -->
-  <section class="chapter anchor" id="skills">
-    <span class="stat-badge mb-4">Chapter 6</span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Skills required in 2026</h2>
-    <p>The remote work landscape now demands a blend of technical, self‑management, and AI‑literacy skills.</p>
-    
-    <div class="grid md:grid-cols-2 gap-8 my-8">
-      <div>
-        <h3 class="text-xl font-bold mb-3"><i class="fa-solid fa-brain text-teal-600 mr-2"></i>Core competencies</h3>
-        <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Digital collaboration:</strong> Slack, Zoom, Asana, Notion — asynchronous communication [3].</li>
-          <li><strong>Self‑discipline & time management:</strong> essential when no boss watches [1].</li>
-          <li><strong>AI proficiency:</strong> 2026 employers expect candidates to delegate routine tasks to AI (Claude, ChatGPT) to focus on high‑value work [7].</li>
-          <li><strong>Income diversification:</strong> fractional / multi‑client mindset [7].</li>
-          <li><strong>Cross‑cultural communication:</strong> working with global teams.</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold mb-3"><i class="fa-solid fa-wrench text-teal-600 mr-2"></i>Technical skills in demand</h3>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Software development (Python, JavaScript, cloud).</li>
-          <li>UX/UI design & branding [2].</li>
-          <li>Digital marketing, SEO, content strategy.</li>
-          <li>Data analysis & AI prompting.</li>
-          <li>Online teaching / curriculum design [6].</li>
-        </ul>
-      </div>
     </div>
   </section>
 
   <!-- CHAPTER 6: CARIBBEAN VISA OPTIONS -->
   <section class="chapter anchor" id="caribbean">
-    <span class="stat-badge mb-4">Chapter 7</span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Caribbean digital nomad visas — island by island (2026)</h2>
-    <p>Ten Caribbean jurisdictions offer legal routes to live locally while working for overseas employers [9]. Below, the current landscape as of March 2026. Note: Bermuda ended its program in 2025 — a caution that rules can tighten [8].</p>
-
-    <div class="visa-table my-8">
-      <table class="w-full text-sm">
+    <span class="stat-badge mb-3">Chapter 6</span>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">Caribbean digital nomad visas — island by island</h2>
+    <p class="mb-4">Ten Caribbean jurisdictions offer legal routes to live locally while working for overseas employers [9]. Below, current as of March 2026.</p>
+    <div class="visa-table">
+      <table>
         <thead><tr><th>Island</th><th>Program / cost</th><th>Income req.</th><th>Duration</th><th>Est. monthly cost</th><th>Safety</th></tr></thead>
         <tbody>
-          <tr><td class="font-medium">Bahamas</td><td>BEATS: $1,025 (professional) [4]</td><td>Proof of means</td><td>1 year, renewable</td><td>$2,500–4,000</td><td class="safety-high">safe</td></tr>
-          <tr><td class="font-medium">Barbados</td><td>Welcome Stamp [8]</td><td>$50,000/yr</td><td>12 months</td><td>$2,500–4,500</td><td class="safety-high">safe</td></tr>
-          <tr><td class="font-medium">Antigua & Barbuda</td><td>$1,500 single [8]</td><td>$50,000/yr</td><td>2 years</td><td>$2,200–3,800</td><td class="safety-high">safe</td></tr>
-          <tr><td class="font-medium">Cayman Islands</td><td>$100k income</td><td>$100k/yr</td><td>~1 year</td><td>$4,000–6,000</td><td class="safety-high">very safe</td></tr>
-          <tr><td class="font-medium">Curaçao</td><td>@Home ~$294 [8]</td><td>Sufficient means</td><td>6 months</td><td>$2,000–3,000</td><td class="safety-medium">moderate</td></tr>
-          <tr><td class="font-medium">Belize</td><td>Work Where You Vacation</td><td>$75,000/yr [6]</td><td>6 months</td><td>$2,000–3,200</td><td class="safety-medium">moderate</td></tr>
-          <tr><td class="font-medium">Grenada</td><td>$1,500 fee [8]</td><td>—</td><td>1 year</td><td>$2,000–3,500</td><td class="safety-high">safe</td></tr>
-          <tr><td class="font-medium">Montserrat</td><td>$500–$750 [8]</td><td>$70,000/yr</td><td>1 year</td><td>$2,200–3,000</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Bahamas</td><td>BEATS $1,025 [4]</td><td>Proof</td><td>1 yr</td><td>$2,500–4,000</td><td class="safety-high">safe</td></tr>
+          <tr><td>Barbados</td><td>Welcome Stamp [8]</td><td>$50k/yr</td><td>12 mo</td><td>$2,500–4,500</td><td class="safety-high">safe</td></tr>
+          <tr><td>Antigua</td><td>$1,500 single [8]</td><td>$50k/yr</td><td>2 yrs</td><td>$2,200–3,800</td><td class="safety-high">safe</td></tr>
+          <tr><td>Cayman</td><td>$100k income</td><td>$100k/yr</td><td>~1 yr</td><td>$4,000–6,000</td><td class="safety-high">very safe</td></tr>
+          <tr><td>Curaçao</td><td>@Home ~$294 [8]</td><td>Means</td><td>6 mo</td><td>$2,000–3,000</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Belize</td><td>$75k/yr [6]</td><td>$75k/yr</td><td>6 mo</td><td>$2,000–3,200</td><td class="safety-medium">moderate</td></tr>
+          <tr><td>Grenada</td><td>$1,500 fee [8]</td><td>—</td><td>1 yr</td><td>$2,000–3,500</td><td class="safety-high">safe</td></tr>
+          <tr><td>Montserrat</td><td>$500–$750 [8]</td><td>$70k/yr</td><td>1 yr</td><td>$2,200–3,000</td><td class="safety-high">very safe</td></tr>
         </tbody>
       </table>
     </div>
@@ -416,42 +406,40 @@
 
   <!-- CHAPTER 7: COURSES & RESOURCES -->
   <section class="chapter anchor" id="courses">
-    <span class="stat-badge mb-4">Chapter 8</span>
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Courses & certifications (2026)</h2>
-    <p>To thrive, Caribbean citizens should invest in skills that signal credibility globally. Below are current, reputable offerings.</p>
-
-    <div class="grid md:grid-cols-2 gap-6 my-8">
-      <div class="course-card">
-        <div class="flex items-center gap-3 mb-3">
-          <i class="fa-brands fa-harvard text-3xl text-teal-800"></i>
-          <h3 class="text-xl font-bold">Harvard University (edX)</h3>
+    <span class="stat-badge mb-3">Chapter 7</span>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">Courses & certifications (2026)</h2>
+    <p class="mb-4">Invest in skills that signal credibility globally. Below are current, reputable offerings.</p>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div class="course-card p-4">
+        <div class="flex items-center gap-2 mb-2">
+          <i class="fa-brands fa-harvard text-2xl text-teal-800"></i>
+          <h3 class="text-lg font-bold">Harvard (edX)</h3>
         </div>
-        <p class="font-semibold">Remote Work Revolution for Everyone</p>
-        <p class="text-sm mb-2">Free* (optional certificate). 3 weeks, self‑paced. Learn to build trust, productivity, digital tools, and lead remote teams [3].</p>
-        <p class="text-xs text-stone-500">*audit free; verified track fee</p>
+        <p class="font-semibold text-sm">Remote Work Revolution for Everyone</p>
+        <p class="text-xs mb-1">Free audit; 3 weeks, self‑paced [3].</p>
       </div>
-      <div class="course-card">
-        <i class="fa-brands fa-linkedin text-3xl text-teal-800 mb-2"></i>
-        <h3 class="text-xl font-bold">LinkedIn Learning</h3>
-        <p class="text-sm">“Remote Work Foundations”, “Time Management for Remote Teams”, “AI Productivity” – widely recognised certificates.</p>
+      <div class="course-card p-4">
+        <i class="fa-brands fa-linkedin text-2xl text-teal-800 mb-1"></i>
+        <h3 class="text-lg font-bold">LinkedIn Learning</h3>
+        <p class="text-xs">Remote Work Foundations, AI Productivity, Time Management.</p>
       </div>
-      <div class="course-card">
-        <i class="fa-solid fa-chart-simple text-3xl text-teal-800 mb-2"></i>
-        <h3 class="text-xl font-bold">Google Career Certificates</h3>
-        <p class="text-sm">UX Design, Data Analytics, Project Management – fully online, employer endorsed.</p>
+      <div class="course-card p-4">
+        <i class="fa-solid fa-chart-simple text-2xl text-teal-800 mb-1"></i>
+        <h3 class="text-lg font-bold">Google Certificates</h3>
+        <p class="text-xs">UX Design, Data Analytics, Project Management.</p>
       </div>
-      <div class="course-card">
-        <i class="fa-solid fa-code text-3xl text-teal-800 mb-2"></i>
-        <h3 class="text-xl font-bold">Coursera / edX specialisations</h3>
-        <p class="text-sm">AI For Everyone (DeepLearning.ai), Digital Marketing (Illinois), Freelancing Foundations.</p>
+      <div class="course-card p-4">
+        <i class="fa-solid fa-code text-2xl text-teal-800 mb-1"></i>
+        <h3 class="text-lg font-bold">Coursera / edX</h3>
+        <p class="text-xs">AI For Everyone, Digital Marketing, Freelancing.</p>
       </div>
     </div>
   </section>
 
   <!-- REFERENCES -->
   <section class="chapter" id="references">
-    <h2 class="text-2xl font-bold mb-4">Sources & further reading</h2>
-    <p class="text-sm">[1] Meltzer Hellrung, “Digital Nomad Visas as H-1B Alternative”, Feb 2026 <br>
+    <h2 class="text-xl font-bold mb-2">Sources & further reading</h2>
+    <p class="text-xs leading-relaxed">[1] Meltzer Hellrung, “Digital Nomad Visas as H-1B Alternative”, Feb 2026 <br>
     [2] TEMPO Networks / News Americas, “Top 10 Caribbean Passports 2026”, Jan 2026 <br>
     [3] Harvard PLI / edX, “Remote Work Revolution for Everyone”, Feb 2026 <br>
     [4] Holafly, “Bahamas digital nomad visa (BEATS)”, updated Feb 2026 <br>
@@ -461,13 +449,13 @@
     [8] Rio Times, “Caribbean Digital Nomad Visas In 2026”, Jan 2026 <br>
     [9] Weather2Travel, “Best countries for digital nomads in 2026”, March 2026 <br>
     [10] ConnectPls, “Safest Cities to Live in 2026”, Jan 2026 </p>
-    <p class="text-xs text-stone-400 mt-8">All information current as of March 2026. Verify with official government sites before planning a move.</p>
+    <p class="text-2xs text-stone-400 mt-4">All information current as of March 2026. Verify with official government sites before planning a move.</p>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[#0f4b55] text-white/70 py-8 text-center text-sm relative">
+  <footer class="bg-[#0f4b55] text-white/70 py-6 text-center text-xs relative">
     <p>© 2026 Caribbean Digital Nomad Handbook — global edition. Use freely, verify always.</p>
-    <span class="evronai-watermark absolute right-4 bottom-2 text-white/30">evronai</span>
+    <span class="evronai-watermark absolute right-3 bottom-2">evronai</span>
   </footer>
 
   <script>
